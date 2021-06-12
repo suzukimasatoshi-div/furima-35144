@@ -33,8 +33,8 @@ Things you may want to cover:
 | email                | string | null: false |
 | password             | string | null: false |
 | psddword again       | string | null: false |
-| name full-width      | string | null: false |
-| name kana full-width | string | null: false |
+| name_full-width      | string | null: false |
+| name_kana_full-width | string | null: false |
 | birthday             | string | null: false |
 
 ## Association
@@ -59,11 +59,11 @@ Things you may want to cover:
 
 | Column               | Type       | Options                         |
 |----------------------|------------|---------------------------------|
-| product image        |            |                                 |
-| product name         | string     | null: false                     |
-| product descriiption | text       | null: false                     |
+| product_image        |            |                                 |
+| product_name         | string     | null: false                     |
+| product_descriiption | text       | null: false                     |
 | category             | string     | null: false                     |
-| product condition    | text       | null: false                     |
+| product_condition    | text       | null: false                     |
 | price                | integer    | null: false                     | 
 | user                 | references | null: false, foreign_key: true  |
 
@@ -77,15 +77,15 @@ Things you may want to cover:
 
 | Column               | Type       | Options                                   |
 |----------------------|------------|-------------------------------------------|
-| card information     | integer    | null: false                               |
-| expiration date      | integer    | null: false                               |
-| security code        | integer    | null: false                               |
-| postal code          | integer    | null: false                               |
+| card_information     | integer    | null: false                               |
+| expiration_date      | integer    | null: false                               |
+| security_code        | integer    | null: false                               |
+| postal_code          | integer    | null: false                               |
 | prefectures          | string     | null: false                               |
 | municipality         | string     | null: false                               |
 | address              | integer    | null: false                               |
-| building name        | string     | null: false                               |
-| phone number         | integer    | null: false                               |
+| building_name        | string     | null: false                               |
+| phone_number         | integer    | null: false                               |
 | user                 | references | null: false, foreign_key: true            |
 
 ## Association
@@ -95,9 +95,9 @@ Things you may want to cover:
 
 | Column               | Type       | Options                                 |
 |----------------------|------------|-----------------------------------------|
-| shipping charges     | string     | null: false                             |
-| delivery area        | string     | null: false                             | 
-| days to delivery     | datetime   | null: false                             |
+| shipping_charges     | string     | null: false                             |
+| delivery_area        | string     | null: false                             | 
+| days_to_delivery     | datetime   | null: false                             |
 | user                 | references | null: false, foreign_key: true          |  
 
 ## Association
