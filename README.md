@@ -36,12 +36,12 @@ Things you may want to cover:
 | first_name_kana_full-width           | string | null: false               |
 | last_name_full-width                 | string | null: false               |
 | last_name_kana_full-width            | string | null: false               |
-| date                                 | string | null: false               |
+| birthday                             | date   | null: false               |
 
 ## Association
 - has_many :comments
 - has_many :items
-- has_many :purchase
+- has_many :purchases
 
 ## Comment テーブル
 
@@ -52,27 +52,27 @@ Things you may want to cover:
 | item              | references | null: false, foreign_key: true             |
 
 ## Association
-- has_many :items
+- has_many   :items
 - belongs_to :user
 
 ## Items テーブル
 
-| Column               | Type       | Options                         |
-|----------------------|------------|---------------------------------|
-| product_name         | string     | null: false                     |
-| product_descriiption | text       | null: false                     |
-| category             | string     | null: false                     |
-| product_condition    | text       | null: false                     |
-| price                | integer    | null: false                     | 
-| shipping_charges     | string     | null: false                     |
-| delivery_area        | string     | null: false                     | 
-| days_to_delivery     | datetime   | null: false                     |
-| user                 | references | null: false, foreign_key: true  |
+| Column                | Type       | Options                         |
+|-----------------------|------------|---------------------------------|
+| product_name          | string     | null: false                     |
+| product_descriiption  | text       | null: false                     |
+| category_id           | integer    | null: false                     |
+| product_condition_id  | integer    | null: false                     |
+| price                 | integer    | null: false                     | 
+| shipping_charges      | string     | null: false                     |
+| delivery_area         | string     | null: false                     | 
+| days_to_delivery      | datetime   | null: false                     |
+| user                  | references | null: false, foreign_key: true  |
 
 ## Association
 - belongs_to :user
 - belongs_to :comment
-- belongs_to :purchase
+- has_one    :purchase
 
 ## Purchase テーブル
 
@@ -83,19 +83,20 @@ Things you may want to cover:
 
 ## Association
 - belongs_to :user
-- belongs_to :items
+- belongs_to :item
+- belongs_to :address
 
 ## Shipping address テーブル
 
 | Column               | Type       | Options                                 |
 |----------------------|------------|-----------------------------------------|
-| postal_code          | integer    | null: false                             |
+| postal_code          | string     | null: false                             |
 | prefectures          | string     | null: false                             |
 | municipality         | string     | null: false                             |
-| address              | integer    | null: false                             |
+| address              | string     | null: false                             |
 | building_name        | string     | null: false                             |
-| phone_number         | integer    | null: false                             |
-| user                 | references | null: false, foreign_key: true          |  
+| phone_number         | string     | null: false                             |
+| user                 | references | null: false                             |  
 
 ## Association
 - belongs_to purchase
