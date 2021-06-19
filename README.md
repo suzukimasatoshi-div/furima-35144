@@ -25,7 +25,7 @@ Things you may want to cover:
 
 # テーブル設計
 
-## users テーブル
+## Users テーブル
 
 | Column                               | Type   |Options                    |
 |--------------------------------------|--------|---------------------------|
@@ -86,7 +86,7 @@ Things you may want to cover:
 - belongs_to :item
 - has_one :shipping_address
 
-## Shipping_address テーブル
+## Shipping_addresses テーブル
 
 | Column               | Type       | Options                                 |
 |----------------------|------------|-----------------------------------------|
