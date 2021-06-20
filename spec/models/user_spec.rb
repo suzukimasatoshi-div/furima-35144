@@ -57,6 +57,18 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
 
+      it 'pssswordは全角では登録できないこと' do
+        @user.password = '１２３abc'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+
+      it 'passwordは英語のみでは登録できないこと' do
+        @user.password = 'abcdefg'
+        @user.valid?
+        expect(@user.errors.full_messages).to include("Password is invalid")
+      end
+
       it 'first_name_full_widthが全角(漢字、ひらがな、カタカナ)でないと保存できないこと' do
         @user.first_name_full_width = 'a11'
         @user.valid?
