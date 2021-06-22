@@ -8,6 +8,6 @@ FactoryBot.define do
     first_name_kana_full_width { 'スズキ' }
     last_name_full_width { '雅俊' }
     last_name_kana_full_width { 'マサトシ' }
-    birthday { 19_920_220 }
+    birthday { "1992-02-20" }
   end
 end
