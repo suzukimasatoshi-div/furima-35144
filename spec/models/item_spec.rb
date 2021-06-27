@@ -5,13 +5,17 @@ RSpec.describe Item, type: :model do
     @item = FactoryBot.build(:item)
   end
   describe "出品" do
-    it "全ての情報が正しく入力されていれば出品できる" do
-      expect(@item).to be_valid
+    context "全ての情報が正しく入力されていれば" do
+      it "出品できる" do
+        expect(@item).to be_valid
+      end
     end
-    it "imageが空だと出品できない" do
-      @item.image = nil
-      @item.valid?
-      expect(@item.errors.full_messages).to include("Image can't be blank")
+    context "imageが空だと" do
+      it "出品できない" do
+        @item.image = nil
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Image can't be blank")
+      end
     end
     it "prduct_nameが空だと出品できない" do
       @item.product_name = ""
