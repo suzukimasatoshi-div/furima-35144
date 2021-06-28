@@ -36,7 +36,7 @@ RSpec.describe User, type: :model do
       it 'emailに@が含まれていない場合、保存できないこと' do
         @user.email = 'hoge.hoge.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
 
       it 'passwordが空だと保存できないこと' do
@@ -66,13 +66,13 @@ RSpec.describe User, type: :model do
       it 'pssswordは全角では登録できないこと' do
         @user.password = '１２３abc'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
 
       it 'passwordは英語のみでは登録できないこと' do
         @user.password = 'abcdefg'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Password is invalid")
+        expect(@user.errors.full_messages).to include('Password is invalid')
       end
 
       it 'first_name_full_widthが全角(漢字、ひらがな、カタカナ)でないと保存できないこと' do

@@ -10,9 +10,9 @@ class Item < ApplicationRecord
   belongs_to :shipping_charge
 
   with_options presence: true do
-    validates :product_name      
-    validates :image        
-    validates :product_descriiption 
+    validates :product_name
+    validates :image
+    validates :product_descriiption
     validates :price, format: { with: /\A[0-9]+\z/ }
     with_options numericality: { other_than: 1 } do
       validates :category_id
@@ -23,6 +23,5 @@ class Item < ApplicationRecord
     end
   end
 
-  validates_inclusion_of :price, in: 300..9999999
-  
+  validates_inclusion_of :price, in: 300..9_999_999
 end
