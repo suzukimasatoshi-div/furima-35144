@@ -22,6 +22,26 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
   end
 
+  #def edit #商品情報編集機能
+    #@item = Item.find(params[:id])
+    #unless @item.user == current_user
+      #redirect_to root_path
+    #end
+  #end
+
+  #def update #商品情報編集機能
+    #@item = Item.find(params[:id])
+    #unless @item.user == current_user
+      #redirect_to root_path
+    #end
+    #if @item.update(item_params)
+      #redirect_to item_path(@item.id)
+    #else
+      #render :edit
+    #end
+  #end
+
+
   def item_params
     params.require(:item).permit(:image, :product_name, :product_descriiption, :category_id, :product_condition_id, :price,
                                  :shipping_charge_id, :delivery_area_id, :days_to_delivery_id).merge(user_id: current_user.id)
