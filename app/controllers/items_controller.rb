@@ -39,7 +39,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def destroy #商品削除機能
+  def destroy
     @item = Item.find(params[:id])
     unless @item.user == current_user
       redirect_to root_path
