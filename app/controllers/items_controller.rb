@@ -39,6 +39,15 @@ class ItemsController < ApplicationController
     end
   end
 
+  def destroy #商品削除機能
+    @item = Item.find(params[:id])
+    unless @item.user == current_user
+      redirect_to root_path
+    end
+    @item.destroy
+    redirect_to root_path
+  end
+
 
   def item_params
     params.require(:item).permit(:image, :product_name, :product_descriiption, :category_id, :product_condition_id, :price,
