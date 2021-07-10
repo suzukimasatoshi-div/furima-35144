@@ -2,12 +2,12 @@ class PurehasesController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
   before_action :set_purehase, only: [:index, :create]
+  before_action :sold_item
+  before_action :order_item
 
 
   def index
     @order = PurehaseShipping.new
-    current_user
-      redirect_to root_path
   end
 
   def create
@@ -40,5 +40,13 @@ class PurehasesController < ApplicationController
     if @item.purehase.present?
       redirect_to root_path
     end
+  end
+
+  def sold_item
+    redirect_to root_path if @item.purehase.present?
+  end
+
+  def order_item
+    redirect_to root_path if @item.user.id == current_user.id
   end
 end
