@@ -1,11 +1,13 @@
 class PurehasesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
   before_action :set_purehase, only: [:index, :create]
 
 
   def index
     @order = PurehaseShipping.new
+    current_user
+      redirect_to root_path
   end
 
   def create

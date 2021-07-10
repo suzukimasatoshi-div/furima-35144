@@ -1,3 +1,3 @@
 class Shipping < ApplicationRecord
-  belongs_to :purehases
+  belongs_to :purehase
 end

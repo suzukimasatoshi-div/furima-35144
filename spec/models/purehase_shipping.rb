@@ -12,13 +12,19 @@ RSpec.describe PurehaseShipping, type: :model do
       it "全てが正しく保存ができること" do
         expect(@purehase_shipping).to be_valid
       end
+
+      it "building_nameは空でも登録できること" do
+        @purehase_shipping.building_name = ''
+      end
+
     end
 
-
-    it "tokenが空では登録できないこと" do
-      @purehase_shipping.token = nil
-      @purehase_shipping.valid?
-      expect(@purehase_shipping.errors.full_messages).to include("Token can't be blank")
+    context 'tokenが空では' do
+      it "登録できないこと" do
+        @purehase_shipping.token = nil
+        @purehase_shipping.valid?
+        expect(@purehase_shipping.errors.full_messages).to include("Token can't be blank")
+      end
     end
 
   it "postal_codeが空では登録できないこと" do
@@ -60,6 +66,24 @@ RSpec.describe PurehaseShipping, type: :model do
   it "phone_numberは11桁以内でないと登録できないこと" do
     @purehase_shipping.phone_number = '123456789123'
     @purehase_shipping.valid?
+    expect(@purehase_shipping.errors.full_messages).to include("Phone number is too long (maximum is 11 characters)")
+  end
+
+  it "phone_numberは英数混合では登録できないこと" do
+    @purehase_shipping.phone_number = '123456789ab'
+    @purehase_shipping.valid?
     expect(@purehase_shipping.errors.full_messages).to include("Phone number is invalid")
+  end
+
+  it "user_idが空では登録できないこと" do
+    @purehase_shipping.user_id = ''
+    @purehase_shipping.valid?
+    expect(@purehase_shipping.errors.full_messages).to include("User can't be blank")
+  end
+
+  it "item_idが空では登録できないこと" do
+    @purehase_shipping.item_id = ''
+    @purehase_shipping.valid?
+    expect(@purehase_shipping.errors.full_messages).to include("Item can't be blank")
   end
 end

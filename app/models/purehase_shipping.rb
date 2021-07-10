@@ -1,7 +1,7 @@
 class PurehaseShipping
 
   include ActiveModel::Model
-  attr_accessor :postal_code, :delivery_area_id, :municipality, :address, :building_name, :phone_number, :purehase, :user_id, :item_id, :token
+  attr_accessor :postal_code, :delivery_area_id, :municipality, :address, :building_name, :phone_number, :user_id, :item_id, :token, :building_name
 
   with_options presence: true do
     validates :token
@@ -10,10 +10,10 @@ class PurehaseShipping
     validates :municipality
     validates :address
     validates :phone_number, length: {maximum: 11 }
+    validates :phone_number, format: { with: /\A[0-9]+\z/ }
     validates :user_id
     validates :item_id
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/ }
-    validates :phone_number, format: { with: /\A\d{10,11}\z/ }
   end
 
     
