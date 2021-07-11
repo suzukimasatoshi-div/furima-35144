@@ -6,7 +6,6 @@ class PurehasesController < ApplicationController
 
   def index
     @order = PurehaseShipping.new
-    return redirect_to root_path if current_user.id == @item.user.id || @item.purehase.present?
   end
 
   def create
@@ -36,8 +35,6 @@ class PurehasesController < ApplicationController
   end
 
   def set_purehase
-    if @item.purehase.present?
-      redirect_to root_path
-    end
+    return redirect_to root_path if current_user.id == @item.user.id || @item.purehase.present?
   end
 end
