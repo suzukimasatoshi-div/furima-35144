@@ -1,0 +1,2 @@
+module PurehasesHelper
+end

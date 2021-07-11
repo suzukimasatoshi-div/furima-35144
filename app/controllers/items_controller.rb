@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:show, :edit, :update, :destroy]
   before_action :set_unless, only: [:edit, :update, :destroy]
+  before_action :set_purehase, only: [:edit, :update, :destroy]
 
   def index
     @items = Item.all.order('created_at DESC')
@@ -53,6 +54,12 @@ class ItemsController < ApplicationController
 
   def set_unless
     unless @item.user == current_user
+      redirect_to root_path
+    end
+  end
+
+  def set_purehase
+    if @item.purehase.present?
       redirect_to root_path
     end
   end
